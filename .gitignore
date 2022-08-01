@@ -197,3 +197,4 @@ Temporary Items
 .apdisk
 .idea/encodings.xml
 .aws-sam/
+staticfiles/

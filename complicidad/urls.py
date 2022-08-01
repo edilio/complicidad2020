@@ -19,6 +19,7 @@ from redirector import urls
 
 
 urlpatterns = [
+    path('ht/', include('health_check.urls')),
     path('admin/', admin.site.urls),
     path('', include(urls)),
 ]

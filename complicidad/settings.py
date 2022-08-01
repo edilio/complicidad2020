@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Health checks
+    'health_check',  # required
+    'health_check.db',
+
     'redirector.apps.RedirectorConfig',
 ]
 

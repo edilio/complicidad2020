@@ -88,6 +88,17 @@ pyuca = ["pyuca"]
 test = ["pytest", "pytest-django", "pytest-cov", "djangorestframework", "graphene-django"]
 
 [[package]]
+name = "django-health-check"
+version = "3.16.5"
+description = "Run checks on services like databases, queue servers, celery processes, etc."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = ">=2.2"
+
+[[package]]
 name = "flake8"
 version = "5.0.1"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -310,7 +321,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10.5"
-content-hash = "424626479908be973b84197a24da1265d0c4b9d3108e4671e0b26fdc6a79670c"
+content-hash = "9a411f0366a7f9234dbdf116e8f685eedcd1c4a41783be7ae281da46432705bb"
 
 [metadata.files]
 asgiref = [
@@ -378,6 +389,10 @@ django = [
 django-countries = [
     {file = "django-countries-7.3.2.tar.gz", hash = "sha256:0df6d34193667c2343da8935cbfb8a2bd4fb0c97baf01ac10db4628ba1557a82"},
     {file = "django_countries-7.3.2-py3-none-any.whl", hash = "sha256:27fc8a0f66a87c9d839493f3926b4e0f4dd873ef66465aa8cd3e953f99758cc9"},
+]
+django-health-check = [
+    {file = "django-health-check-3.16.5.tar.gz", hash = "sha256:1edfd49293ccebbce29f9da609c407f307aee240ab799ab4201031341ae78c0f"},
+    {file = "django_health_check-3.16.5-py2.py3-none-any.whl", hash = "sha256:8d66781a0ea82b1a8b44878187b38a27370e94f18287312e39be0593e72d8983"},
 ]
 flake8 = [
     {file = "flake8-5.0.1-py2.py3-none-any.whl", hash = "sha256:44e3ecd719bba1cb2ae65d1b54212cc9df4f5db15ac271f8856e5e6c2eebefed"},
