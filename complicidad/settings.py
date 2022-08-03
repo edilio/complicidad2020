@@ -80,13 +80,25 @@ WSGI_APPLICATION = 'complicidad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DB_ENGINE = os.getenv('DB_ENGINE', 'django.db.backends.sqlite3')
+DB_USERNAME = os.getenv('DB_USERNAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT', '5432')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': DB_ENGINE,
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+if DB_ENGINE == 'django.db.backends.postgresql':
+    default = DATABASES['default']
+    default['USER'] = DB_USERNAME
+    default['PASSWORD'] = DB_PASSWORD
+    default['HOST'] = DB_HOST
+    default['PORT'] = DB_PORT
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
