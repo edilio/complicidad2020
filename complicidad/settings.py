@@ -95,6 +95,7 @@ DATABASES = {
 
 if DB_ENGINE == 'django.db.backends.postgresql':
     default = DATABASES['default']
+    default['NAME'] = os.getenv('DB_NAME', 'complicidad')
     default['USER'] = DB_USERNAME
     default['PASSWORD'] = DB_PASSWORD
     default['HOST'] = DB_HOST
