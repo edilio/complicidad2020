@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from django_countries.fields import CountryField
 
@@ -17,3 +18,4 @@ class Marketing(models.Model):
 
     users_ip = models.GenericIPAddressField(max_length=255, null=True, blank=True)
     country = CountryField(null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, db_index=True)
