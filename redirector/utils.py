@@ -24,7 +24,7 @@ def get_ip(req):
     if valid_ipv4(ip):
         return ip
     # forwarded proxy fix for proxy passing setups
-    if (not ip or ip == '127.0.0.1') and 'REMOTE_ADDR' in req.META:
+    if (ip == '127.0.0.1') or 'REMOTE_ADDR' in req.META:
         ip = remote_ip
     return ip
 
