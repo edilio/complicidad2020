@@ -1,13 +1,20 @@
+import logging
+
 from ip3country import CountryLookup
+
+logger = logging.getLogger('complicidad')
 
 
 def get_ip(req):
     ip = req.META.get('HTTP_X_FORWARDED_FOR', None)
+    remote_ip = req.META.get('REMOTE_ADDR', None)
+    logger.info(f'HTTP_X_FORWARDED_FOR: {ip}')
+    logger.info(f'REMOTE_ADDR: {remote_ip}')
     if ip:
         ip = ip.split(',')[-1].strip()
     # forwarded proxy fix for proxy passing setups
     if (not ip or ip == '127.0.0.1') and 'REMOTE_ADDR' in req.META:
-        ip = req.META['REMOTE_ADDR']
+        ip = remote_ip
     return ip
 
 

@@ -149,3 +149,62 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING_LEVEL = 'DEBUG' if DEBUG else 'INFO'
+LOGGING_HANDLER = 'file'
+
+DEBUG_LOG_PATH = os.path.join(BASE_DIR, 'debug.log')
+
+NORMAL_LOGGER = {
+    'handlers': [LOGGING_HANDLER],
+    'level': LOGGING_LEVEL,
+    'propagate': False,
+}
+
+LOGGERS = (
+    'complicidad',
+)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+        },
+    },
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': LOGGING_LEVEL,
+            'class': 'logging.FileHandler',
+            'filename': DEBUG_LOG_PATH,
+            'formatter': 'default',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        **{logger: NORMAL_LOGGER for logger in LOGGERS}
+    },
+}
