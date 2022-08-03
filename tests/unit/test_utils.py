@@ -1,4 +1,11 @@
-from redirector.utils import gen_destination_url, get_country, get_ip
+from redirector.utils import gen_destination_url, get_country, get_ip, valid_ipv4
+
+
+def test_valid_ipv4():
+    assert valid_ipv4('103.47.156.1')
+    assert not valid_ipv4('1030.47.156.1')
+    assert not valid_ipv4('2a03:2880:21ff:2::face:b00c')
+    assert not valid_ipv4('2a09:8280:1::59c0')
 
 
 def test_get_ip():
