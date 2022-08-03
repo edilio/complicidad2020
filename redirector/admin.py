@@ -42,4 +42,4 @@ class CustomDateFieldListFilter(admin.DateFieldListFilter):
 class MarketingAdmin(admin.ModelAdmin):
     list_display = ('utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'affiliate_id',
                     'affiliate_cid', 'gclid', 'gacid', 'msclkid', 'users_ip', 'country', 'created_at')
-    list_filter = ('country', ('created_at', CustomDateFieldListFilter))
+    list_filter = (('created_at', CustomDateFieldListFilter), 'country')
