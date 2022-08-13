@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'health_check.db',
 
     'redirector.apps.RedirectorConfig',
+    'website.apps.WebsiteConfig',
 ]
 
 MIDDLEWARE = [

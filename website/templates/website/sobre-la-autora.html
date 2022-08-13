@@ -1,0 +1,46 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .content-sidebar {
+            background-color: #f8f8f8;
+            border-color: #fff;
+            display: flex;
+            gap: 1em;
+        }
+        .left {
+            flex: 1 1 70%;
+            justify-content: left;
+        }
+        .right {
+            flex: 1 1 30%;
+            max-height: 50%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Sobre la autora</h1>
+    <div class="content-sidebar">
+
+        <div class="left">
+            <p style="text-align:justify-all; white-space:pre-wrap;" >Laidy Pérez nació en el mes del amor en la ciudad de San José de las Lajas, otrora provincia de La Habana, Cuba.
+
+Locutora profesional de radio y presentadora de televisión.
+
+Premio Nacional de la Radio, en su país de origen, como realizadora y locutora.
+
+Se desempeñó, además, como presentadora, guionista y productora de Cartelera Miami, proyecto que se desarrolló en esta ciudad donde reside.
+
+Con sólida base en el periodismo ejercido durante una década.
+
+En la actualidad tiene su blog personal Complicidad en dos páginas sociales.
+            </p>
+        </div>
+
+        <div class="right">
+            <img src="{% static 'website/laidy-perez-complicidad.jpg' %}" class="img-responsive" alt="Laidy Pérez" height="600" >
+        </div>
+    </div>
+{% endblock %}

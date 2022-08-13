@@ -1,0 +1,50 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .content-sidebar {
+            background-color: #f8f8f8;
+            border-color: #fff;
+            display: flex;
+            gap: 1em;
+        }
+        .left {
+            flex: 1 1 50%;
+            justify-content: center;
+        }
+        .right {
+            flex: 1 1 50%;
+            justify-content: center;
+        }
+        .buy-book-container {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Complicidad, de Suspiros y Gemidos</h1>
+    <div class="content-sidebar">
+
+        <div class="left">
+            <div class="buy-book-container">
+                <img src="{% static 'website/portada.jpg' %}" class="img-responsive" alt="Laidy Pérez" height="600" >
+                <p style="text-align:justify-all; white-space:pre-wrap;" >
+                    Complicidad, De Suspiros y Gemidos
+                </p>
+                <p>$15.00</p>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="buy-book-container">
+                <img src="{% static 'website/portada-firmada.jpg' %}" class="img-responsive" alt="Laidy Pérez" height="600" >
+                <p style="text-align:justify-all; white-space:pre-wrap;" >
+                    Complicidad, De Suspiros y Gemidos - Edición Firmada
+                </p>
+                <p>$20.00</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

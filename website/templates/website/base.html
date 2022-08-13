@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% block keywords %}
+        <meta name="keywords" content="libro, poesia, poesía, poesia romantica, poesia erotica, poemas de amor">
+    {% endblock %}
+    {% block description %}
+        <meta name="description" content="Informacion sobre el libro Complicidad De Suspiros y Gemidos">
+    {% endblock %}
+    {% block title %}
+        <title>Complicidad... De Suspiros y Gemidos</title>
+    {% endblock %}
+
+    <style>
+        .content {
+            min-height: calc(100vh - 30px);
+        }
+
+        /* NAVBAR STYLING STARTS */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #000000;
+            color: #fff;
+        }
+
+        .nav-links a {
+            color: #fff;
+        }
+
+        /* LOGO */
+        {#.logo {#}
+        {#    font-size: 32px;#}
+        {#}#}
+
+        /* NAVBAR MENU */
+        .menu {
+            display: flex;
+            gap: 1em;
+            font-size: 18px;
+        }
+
+        .menu li:hover {
+            background-color: #000000;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .menu li {
+            padding: 5px 14px;
+            list-style-type: none;
+        }
+
+        /* DROPDOWN MENU */
+
+        .dropdown {
+            background-color: rgb(1, 139, 139);
+            padding: 1em 0;
+            position: absolute; /*WITH RESPECT TO PARENT*/
+            display: none;
+            border-radius: 8px;
+            top: 35px;
+        }
+
+        .dropdown li + li {
+            margin-top: 10px;
+        }
+
+        .dropdown li {
+            padding: 0.5em 1em;
+            width: 8em;
+            text-align: center;
+        }
+
+        .dropdown li:hover {
+            background-color: #000000;
+        }
+
+        .services:hover .dropdown {
+            display: block;
+        }
+
+        /* NAVBAR STYLING ENDS */
+        /*RESPONSIVE NAVBAR MENU STARTS*/
+        /* CHECKBOX HACK */
+        input[type=checkbox] {
+            display: none;
+        }
+
+        /*HAMBURGER MENU*/
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            user-select: none;
+        }
+
+        /* APPLYING MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                background-color: #000000;
+                right: 0;
+                left: 0;
+                text-align: center;
+                padding: 16px 0;
+            }
+
+            .menu li:hover {
+                display: inline-block;
+                background-color: #000000;
+                transition: 0.3s ease;
+            }
+
+            .menu li + li {
+                margin-top: 12px;
+            }
+
+            input[type=checkbox]:checked ~ .menu {
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .dropdown {
+                left: 50%;
+                top: 30px;
+                transform: translateX(35%);
+            }
+
+            .dropdown li:hover {
+                background-color: #000000;
+            }
+        }
+
+        .footer {
+            background:#000000;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+
+        }
+        .footer-content {
+            display: flex;
+        }
+        .footer-column-1 {
+            padding: 0 1em;
+            flex-basis: 40%;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-colum-2 {
+            flex-basis: 30%;
+            padding: 0 1em;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-colum-3 {
+            flex-basis: 30%;
+            padding: 0 1em;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .instagram {
+            max-height: 40px;
+            max-width: 40px;
+            background-image: url("{% static 'website/instagram_logo_2016.svg' %}")
+        }
+    </style>
+
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">Complicidad</div>
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+        <!-- USING CHECKBOX HACK -->
+        <input type="checkbox" id="checkbox_toggle"/>
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+            <li><a href="{% url 'home' %}">Poemas y Frases</a></li>
+            <li><a href="{% url 'buy' %}">Comprar</a></li>
+            <li><a href="{% url 'about' %}">Sobre la autora</a></li>
+            <li><a href="{% url 'contact-us' %}">Contactar</a></li>
+        </div>
+    </ul>
+</nav>
+<div id="content" class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer class="footer" id="footer">
+    <div class="footer-content">
+        <div class="footer-column-1">
+            <div><h3 style="white-space:pre-wrap;">Complicidad</h3></div>
+            <div>
+                <a href="https://www.facebook.com/complicidad2020/" target="_blank">
+                    <img src="{% static 'website/2021_Facebook_icon.svg' %}" height="40" width="40"/>
+                </a>
+                <a href="https://www.instagram.com/complicidad_lp/" target="_blank" class="instagram">
+                    <img src="{% static 'website/Instagram_logo_2016.svg' %}" height="40" width="40"/>
+                </a>
+            </div>
+        </div>
+        <div class="footer-colum-2">
+            <a href="{% url 'buy' %}">Comprar</a>
+            <p></p>
+            <a href="{% url 'about' %}">Sobre la autora</a>
+        </div>
+        <div class="footer-colum-3">
+
+                <a href="{% url 'home' %}">Poemas y Frases</a>
+            <p></p>
+                <a href="{% url 'contact-us' %}">Contactar</a>
+        </div>
+    </div>
+    <hr>
+    <p>© 2020 Complicidad. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

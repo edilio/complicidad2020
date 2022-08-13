@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from redirector import urls
+from website import urls as web_urls
 
 
 urlpatterns = [
     path('ht/', include('health_check.urls')),
     path('admin/', admin.site.urls),
+    path('website/', include(web_urls)),
     path('', include(urls)),
 ]

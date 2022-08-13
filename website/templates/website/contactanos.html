@@ -1,0 +1,43 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .content-sidebar {
+            background-color: #f8f8f8;
+            border-color: #fff;
+            display: flex;
+            gap: 1em;
+        }
+        .left {
+            flex: 1 1 60%;
+            padding: 5em;
+        }
+        .right {
+            flex: 1 1 25%;
+            max-height: 50%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Contáctanos</h1>
+    <div class="content-sidebar">
+
+        <div class="left">
+
+            <form method="POST" enctype="multipart/form-data" name="EmailForm">
+
+                <label for="contactName">Nombre:</label><br>
+                <input type="text" size="50" name="contact_name" id="contactName"/><br><br>
+                <label for="message"></label><br>
+                <textarea name="message" id="message" rows="15" cols="80"></textarea>
+                <br><br>
+                <button type="input" value="Enviar">Enviar</button>
+            </form>
+        </div>
+        <div class="right">
+            <img src="{% static 'website/portada.jpg' %}" alt="Autora" style="width: 100%;">
+        </div>
+    </div>
+{% endblock %}
