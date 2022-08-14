@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 LAIDY = 'Laidy Pérez'
 
@@ -21,6 +22,9 @@ class Poem(ToBePublished):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('poem-detail', args=[str(self.id)])
 
 
 class Frase(ToBePublished):

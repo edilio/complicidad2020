@@ -18,6 +18,7 @@
     <style>
         .content {
             min-height: calc(100vh - 30px);
+            font-family: Georgia;
         }
 
         /* NAVBAR STYLING STARTS */
@@ -192,7 +193,7 @@
         <label for="checkbox_toggle" class="hamburger">&#9776;</label>
         <!-- NAVIGATION MENUS -->
         <div class="menu">
-            <li><a href="{% url 'home' %}">Poemas y Frases</a></li>
+            <li><a href="{% url 'poem-list' %}">Poemas y Frases</a></li>
             <li><a href="{% url 'buy' %}">Comprar</a></li>
             <li><a href="{% url 'about' %}">Sobre la autora</a></li>
             <li><a href="{% url 'contact-us' %}">Contactar</a></li>
@@ -222,10 +223,9 @@
             <a href="{% url 'about' %}">Sobre la autora</a>
         </div>
         <div class="footer-colum-3">
-
-                <a href="{% url 'home' %}">Poemas y Frases</a>
-            <p></p>
-                <a href="{% url 'contact-us' %}">Contactar</a>
+            <a href="{% url 'poem-list' %}">Poemas y Frases</a>
+            <br>
+            <a href="{% url 'contact-us' %}">Contactar</a>
         </div>
     </div>
     <hr>

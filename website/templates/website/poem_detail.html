@@ -1,0 +1,47 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block keywords %}
+    {% if poem.keywords %}
+        <meta name="keywords" content="{{ poem.keywords }}">
+    {% else %}
+        <meta name="keywords" content="poesia erotica y romantica, poesia, poesia romantica">
+    {% endif %}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .content-sidebar {
+            background-color: #f8f8f8;
+            border-color: #fff;
+            display: flex;
+            gap: 1em;
+        }
+        .left {
+            flex: 1 1 70%;
+            margin-left: 10%;
+        }
+        .right {
+            flex: 1 1 30%;
+            max-height: 50%;
+            overflow-y: scroll;
+            margin-right: 10%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">{{ poem.title }}</h1>
+    <div class="content-sidebar">
+
+        <div class="left" id="poema">
+            <p style="text-align:justify-all;white-space:pre-wrap;" >
+                {{ poem.content }}
+            </p>
+        </div>
+
+        <div class="right">
+            <img src="{% static 'website/book-good.png' %}" class="img-responsive" alt="Laidy Pérez" height="600" >
+        </div>
+    </div>
+{% endblock %}
